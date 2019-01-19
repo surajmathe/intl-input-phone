@@ -1,0 +1,10 @@
+<div>
+  <h1>Sample with all country</h1>
+  <intl-input-phone [NumberTextValue]="'8602605927'" [SelectedCountryISOCode]="'US'" [ConfigurationOption]="configOption2" ></intl-input-phone>
+</div>
+
+<div>
+  <h1>Sample with selected country</h1>
+  <intl-input-phone [CountryList]="selectedCountryList"  [ConfigurationOption]="configOption1" (OnNumberChange)="onNumberChange($event)"></intl-input-phone>
+</div>
+

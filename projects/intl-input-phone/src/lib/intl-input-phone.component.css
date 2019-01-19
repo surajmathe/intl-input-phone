@@ -1,0 +1,1735 @@
+/******************Select picker css start *************************/
+.select2-container {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  vertical-align: middle
+}
+
+.select2-container .select2-selection--single {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  height: 28px;
+  user-select: none;
+  -webkit-user-select: none
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  display: block;
+  padding-left: 2px;
+  padding-right: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.select2-container .select2-selection--single .select2-selection__clear {
+  position: relative
+}
+
+.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
+  padding-right: 8px;
+  padding-left: 20px
+}
+
+.select2-container .select2-selection--multiple {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  min-height: 32px;
+  user-select: none;
+  -webkit-user-select: none
+}
+
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+  display: inline-block;
+  overflow: hidden;
+  padding-left: 2px;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.select2-container .select2-search--inline {
+  float: left
+}
+
+.select2-container .select2-search--inline .select2-search__field {
+  box-sizing: border-box;
+  border: none;
+  font-size: 100%;
+  margin-top: 5px;
+  padding: 0
+}
+
+.select2-container .select2-search--inline .select2-search__field::-webkit-search-cancel-button {
+  -webkit-appearance: none
+}
+
+.select2-dropdown {
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  left: -100000px;
+  width: 100%;
+  z-index: 1051
+}
+
+.select2-results {
+  display: block
+}
+
+.select2-results__options {
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+
+.select2-results__option {
+  padding: 6px;
+  user-select: none;
+  -webkit-user-select: none
+}
+
+.select2-results__option[aria-selected] {
+  cursor: pointer
+}
+
+.select2-container--open .select2-dropdown {
+  left: 0
+}
+
+.select2-container--open .select2-dropdown--above {
+  border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0
+}
+
+.select2-container--open .select2-dropdown--below {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0
+}
+
+.select2-search--dropdown {
+  display: block;
+  padding: 4px
+}
+
+.select2-search--dropdown .select2-search__field {
+  padding: 4px;
+  width: 100%;
+  box-sizing: border-box
+}
+
+.select2-search--dropdown .select2-search__field::-webkit-search-cancel-button {
+  -webkit-appearance: none
+}
+
+.select2-search--dropdown.select2-search--hide {
+  display: none
+}
+
+.select2-close-mask {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  min-height: 100%;
+  min-width: 100%;
+  height: auto;
+  width: auto;
+  opacity: 0;
+  z-index: 99;
+  background-color: #fff;
+  filter: alpha(opacity=0)
+}
+
+.select2-hidden-accessible {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important
+}
+
+.select2-container--default .select2-selection--single {
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 4px
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #444;
+  line-height: 28px
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+  cursor: pointer;
+  float: right;
+  font-weight: bold
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: #999
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 26px;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 20px
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: #888 transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px 4px 0 4px;
+  height: 0;
+  left: 50%;
+  margin-left: -4px;
+  margin-top: -2px;
+  position: absolute;
+  top: 50%;
+  width: 0
+}
+
+.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__clear {
+  float: left
+}
+
+.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__arrow {
+  left: 1px;
+  right: auto
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--single {
+  background-color: #eee;
+  cursor: default
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--single .select2-selection__clear {
+  display: none
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-color: transparent transparent #888 transparent;
+  border-width: 0 4px 5px 4px
+}
+
+.select2-container--default .select2-selection--multiple {
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: text
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  padding: 0 5px;
+  width: 100%
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+  list-style: none
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__placeholder {
+  color: #999;
+  margin-top: 5px;
+  float: left
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__clear {
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-right: 10px
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #e4e4e4;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: default;
+  float: left;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 0 5px
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: #999;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 2px
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+  color: #333
+}
+
+.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice,
+.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__placeholder,
+.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-search--inline {
+  float: right
+}
+
+.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice {
+  margin-left: 5px;
+  margin-right: auto
+}
+
+.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove {
+  margin-left: 2px;
+  margin-right: auto
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border: solid black 1px;
+  outline: 0
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--multiple {
+  background-color: #eee;
+  cursor: default
+}
+
+.select2-container--default.select2-container--disabled .select2-selection__choice__remove {
+  display: none
+}
+
+.select2-container--default.select2-container--open.select2-container--above .select2-selection--single,
+.select2-container--default.select2-container--open.select2-container--above .select2-selection--multiple {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0
+}
+
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--single,
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+  border: 1px solid #aaa
+}
+
+.select2-container--default .select2-search--inline .select2-search__field {
+  background: transparent;
+  border: none;
+  outline: 0;
+  box-shadow: none;
+  -webkit-appearance: textfield
+}
+
+.select2-container--default .select2-results>.select2-results__options {
+  max-height: 200px;
+  overflow-y: auto
+}
+
+.select2-container--default .select2-results__option[role=group] {
+  padding: 0
+}
+
+.select2-container--default .select2-results__option[aria-disabled=true] {
+  color: #999
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+  background-color: #ddd
+}
+
+.select2-container--default .select2-results__option .select2-results__option {
+  padding-left: 1em
+}
+
+.select2-container--default .select2-results__option .select2-results__option .select2-results__group {
+  padding-left: 0
+}
+
+.select2-container--default .select2-results__option .select2-results__option .select2-results__option {
+  margin-left: -1em;
+  padding-left: 2em
+}
+
+.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
+  margin-left: -2em;
+  padding-left: 3em
+}
+
+.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
+  margin-left: -3em;
+  padding-left: 4em
+}
+
+.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
+  margin-left: -4em;
+  padding-left: 5em
+}
+
+.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
+  margin-left: -5em;
+  padding-left: 6em
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #5897fb;
+  color: white
+}
+
+.select2-container--default .select2-results__group {
+  cursor: default;
+  display: block;
+  padding: 6px
+}
+
+.select2-container--classic .select2-selection--single {
+  background-color: #f7f7f7;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  outline: 0;
+  background-image: -webkit-linear-gradient(top, #fff 50%, #eee 100%);
+  background-image: -o-linear-gradient(top, #fff 50%, #eee 100%);
+  background-image: linear-gradient(to bottom, #fff 50%, #eee 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0)
+}
+
+.select2-container--classic .select2-selection--single:focus {
+  border: 1px solid #5897fb
+}
+
+.select2-container--classic .select2-selection--single .select2-selection__rendered {
+  color: #444;
+  line-height: 28px
+}
+
+.select2-container--classic .select2-selection--single .select2-selection__clear {
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+  margin-right: 10px
+}
+
+.select2-container--classic .select2-selection--single .select2-selection__placeholder {
+  color: #999
+}
+
+.select2-container--classic .select2-selection--single .select2-selection__arrow {
+  background-color: #ddd;
+  border: none;
+  border-left: 1px solid #aaa;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  height: 26px;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 20px;
+  background-image: -webkit-linear-gradient(top, #eee 50%, #ccc 100%);
+  background-image: -o-linear-gradient(top, #eee 50%, #ccc 100%);
+  background-image: linear-gradient(to bottom, #eee 50%, #ccc 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFCCCCCC', GradientType=0)
+}
+
+.select2-container--classic .select2-selection--single .select2-selection__arrow b {
+  border-color: #888 transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px 4px 0 4px;
+  height: 0;
+  left: 50%;
+  margin-left: -4px;
+  margin-top: -2px;
+  position: absolute;
+  top: 50%;
+  width: 0
+}
+
+.select2-container--classic[dir="rtl"] .select2-selection--single .select2-selection__clear {
+  float: left
+}
+
+.select2-container--classic[dir="rtl"] .select2-selection--single .select2-selection__arrow {
+  border: none;
+  border-right: 1px solid #aaa;
+  border-radius: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  left: 1px;
+  right: auto
+}
+
+.select2-container--classic.select2-container--open .select2-selection--single {
+  border: 1px solid #5897fb
+}
+
+.select2-container--classic.select2-container--open .select2-selection--single .select2-selection__arrow {
+  background: transparent;
+  border: none
+}
+
+.select2-container--classic.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-color: transparent transparent #888 transparent;
+  border-width: 0 4px 5px 4px
+}
+
+.select2-container--classic.select2-container--open.select2-container--above .select2-selection--single {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-image: -webkit-linear-gradient(top, #fff 0%, #eee 50%);
+  background-image: -o-linear-gradient(top, #fff 0%, #eee 50%);
+  background-image: linear-gradient(to bottom, #fff 0%, #eee 50%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0)
+}
+
+.select2-container--classic.select2-container--open.select2-container--below .select2-selection--single {
+  border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-image: -webkit-linear-gradient(top, #eee 50%, #fff 100%);
+  background-image: -o-linear-gradient(top, #eee 50%, #fff 100%);
+  background-image: linear-gradient(to bottom, #eee 50%, #fff 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFFFFFFF', GradientType=0)
+}
+
+.select2-container--classic .select2-selection--multiple {
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: text;
+  outline: 0
+}
+
+.select2-container--classic .select2-selection--multiple:focus {
+  border: 1px solid #5897fb
+}
+
+.select2-container--classic .select2-selection--multiple .select2-selection__rendered {
+  list-style: none;
+  margin: 0;
+  padding: 0 5px
+}
+
+.select2-container--classic .select2-selection--multiple .select2-selection__clear {
+  display: none
+}
+
+.select2-container--classic .select2-selection--multiple .select2-selection__choice {
+  background-color: #e4e4e4;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: default;
+  float: left;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 0 5px
+}
+
+.select2-container--classic .select2-selection--multiple .select2-selection__choice__remove {
+  color: #888;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 2px
+}
+
+.select2-container--classic .select2-selection--multiple .select2-selection__choice__remove:hover {
+  color: #555
+}
+
+.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice {
+  float: right
+}
+
+.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice {
+  margin-left: 5px;
+  margin-right: auto
+}
+
+.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove {
+  margin-left: 2px;
+  margin-right: auto
+}
+
+.select2-container--classic.select2-container--open .select2-selection--multiple {
+  border: 1px solid #5897fb
+}
+
+.select2-container--classic.select2-container--open.select2-container--above .select2-selection--multiple {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0
+}
+
+.select2-container--classic.select2-container--open.select2-container--below .select2-selection--multiple {
+  border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0
+}
+
+.select2-container--classic .select2-search--dropdown .select2-search__field {
+  border: 1px solid #aaa;
+  outline: 0
+}
+
+.select2-container--classic .select2-search--inline .select2-search__field {
+  outline: 0;
+  box-shadow: none
+}
+
+.select2-container--classic .select2-dropdown {
+  background-color: #fff;
+  border: 1px solid transparent
+}
+
+.select2-container--classic .select2-dropdown--above {
+  border-bottom: none
+}
+
+.select2-container--classic .select2-dropdown--below {
+  border-top: none
+}
+
+.select2-container--classic .select2-results>.select2-results__options {
+  max-height: 200px;
+  overflow-y: auto
+}
+
+.select2-container--classic .select2-results__option[role=group] {
+  padding: 0
+}
+
+.select2-container--classic .select2-results__option[aria-disabled=true] {
+  color: grey
+}
+
+.select2-container--classic .select2-results__option--highlighted[aria-selected] {
+  background-color: #3875d7;
+  color: #fff
+}
+
+.select2-container--classic .select2-results__group {
+  cursor: default;
+  display: block;
+  padding: 6px
+}
+
+.select2-container--classic.select2-container--open .select2-dropdown {
+  border-color: #5897fb;
+}
+
+/******************Select picker css end *************************/
+
+/******************** CSS Used in plugin start*********************/
+/****Fix issue for close selectpicer on click outside of dropdown****/
+html,
+body {
+  height: 100%;
+}
+
+
+.CountryDrpDwn {
+  width: 120px;
+}
+
+.input-main-div{
+  position: relative;
+}
+
+.input-select-div{
+  display: inline-block;
+  position: absolute;
+}
+
+.input-main-div .CountryNumberInput{
+text-indent: 120px;
+height: 22px;
+width: 20%;
+min-width: 250px;
+}
+
+.CountryOptionItem div {
+  display: inline-block;  
+  vertical-align: middle;
+}
+
+.CountryText,
+.CountryCode {
+  padding-left: 3px;
+}
+
+.CountryOptionSelected{
+  line-height: 24px;
+}
+
+.CountryOptionSelected .flags{
+  height: 23px;
+  width: 30px;
+}
+
+.select2-dropdown.select2-dropdown--below{
+  width: max-content!important;
+}
+/******************** CSS Used in plugin end*********************/
+
+/******************CSS For Flags Start*************************/
+.flags {
+  height: 25px;
+  width: 33px;
+}
+
+.flag-ad {
+  background: url('../flags-icon-svg/ad.svg') no-repeat center/contain;
+}
+
+.flag-ae {
+  background: url('../flags-icon-svg/ae.svg') no-repeat center/contain;
+}
+
+.flag-af {
+  background: url('../flags-icon-svg/af.svg') no-repeat center/contain;
+}
+
+.flag-ag {
+  background: url('../flags-icon-svg/ag.svg') no-repeat center/contain;
+}
+
+.flag-ai {
+  background: url('../flags-icon-svg/ai.svg') no-repeat center/contain;
+}
+
+.flag-al {
+  background: url('../flags-icon-svg/al.svg') no-repeat center/contain;
+}
+
+.flag-am {
+  background: url('../flags-icon-svg/am.svg') no-repeat center/contain;
+}
+
+.flag-an {
+  background: url('../flags-icon-svg/an.png') no-repeat center/contain;
+}
+
+.flag-ao {
+  background: url('../flags-icon-svg/ao.svg') no-repeat center/contain;
+}
+
+.flag-aq {
+  background: url('../flags-icon-svg/aq.svg') no-repeat center/contain;
+}
+
+.flag-ar {
+  background: url('../flags-icon-svg/ar.svg') no-repeat center/contain;
+}
+
+.flag-as {
+  background: url('../flags-icon-svg/as.svg') no-repeat center/contain;
+}
+
+.flag-at {
+  background: url('../flags-icon-svg/at.svg') no-repeat center/contain;
+}
+
+.flag-au {
+  background: url('../flags-icon-svg/au.svg') no-repeat center/contain;
+}
+
+.flag-aw {
+  background: url('../flags-icon-svg/aw.svg') no-repeat center/contain;
+}
+
+.flag-ax {
+  background: url('../flags-icon-svg/ax.svg') no-repeat center/contain;
+}
+
+.flag-az {
+  background: url('../flags-icon-svg/az.svg') no-repeat center/contain;
+}
+
+.flag-ba {
+  background: url('../flags-icon-svg/ba.svg') no-repeat center/contain;
+}
+
+.flag-bb {
+  background: url('../flags-icon-svg/bb.svg') no-repeat center/contain;
+}
+
+.flag-bd {
+  background: url('../flags-icon-svg/bd.svg') no-repeat center/contain;
+}
+
+.flag-be {
+  background: url('../flags-icon-svg/be.svg') no-repeat center/contain;
+}
+
+.flag-bf {
+  background: url('../flags-icon-svg/bf.svg') no-repeat center/contain;
+}
+
+.flag-bg {
+  background: url('../flags-icon-svg/bg.svg') no-repeat center/contain;
+}
+
+.flag-bh {
+  background: url('../flags-icon-svg/bh.svg') no-repeat center/contain;
+}
+
+.flag-bi {
+  background: url('../flags-icon-svg/bi.svg') no-repeat center/contain;
+}
+
+.flag-bj {
+  background: url('../flags-icon-svg/bj.svg') no-repeat center/contain;
+}
+
+.flag-bl {
+  background: url('../flags-icon-svg/bl.svg') no-repeat center/contain;
+}
+
+.flag-bm {
+  background: url('../flags-icon-svg/bm.svg') no-repeat center/contain;
+}
+
+.flag-bn {
+  background: url('../flags-icon-svg/bn.svg') no-repeat center/contain;
+}
+
+.flag-bo {
+  background: url('../flags-icon-svg/bo.svg') no-repeat center/contain;
+}
+
+.flag-bq {
+  background: url('../flags-icon-svg/bq.svg') no-repeat center/contain;
+}
+
+.flag-br {
+  background: url('../flags-icon-svg/br.svg') no-repeat center/contain;
+}
+
+.flag-bs {
+  background: url('../flags-icon-svg/bs.svg') no-repeat center/contain;
+}
+
+.flag-bt {
+  background: url('../flags-icon-svg/bt.svg') no-repeat center/contain;
+}
+
+.flag-bv {
+  background: url('../flags-icon-svg/bv.svg') no-repeat center/contain;
+}
+
+.flag-bw {
+  background: url('../flags-icon-svg/bw.svg') no-repeat center/contain;
+}
+
+.flag-by {
+  background: url('../flags-icon-svg/by.svg') no-repeat center/contain;
+}
+
+.flag-bz {
+  background: url('../flags-icon-svg/bz.svg') no-repeat center/contain;
+}
+
+.flag-ca {
+  background: url('../flags-icon-svg/ca.svg') no-repeat center/contain;
+}
+
+.flag-cc {
+  background: url('../flags-icon-svg/cc.svg') no-repeat center/contain;
+}
+
+.flag-cd {
+  background: url('../flags-icon-svg/cd.svg') no-repeat center/contain;
+}
+
+.flag-cf {
+  background: url('../flags-icon-svg/cf.svg') no-repeat center/contain;
+}
+
+.flag-cg {
+  background: url('../flags-icon-svg/cg.svg') no-repeat center/contain;
+}
+
+.flag-ch {
+  background: url('../flags-icon-svg/ch.svg') no-repeat center/contain;
+}
+
+.flag-ci {
+  background: url('../flags-icon-svg/ci.svg') no-repeat center/contain;
+}
+
+.flag-ck {
+  background: url('../flags-icon-svg/ck.svg') no-repeat center/contain;
+}
+
+.flag-cl {
+  background: url('../flags-icon-svg/cl.svg') no-repeat center/contain;
+}
+
+.flag-cm {
+  background: url('../flags-icon-svg/cm.svg') no-repeat center/contain;
+}
+
+.flag-cn {
+  background: url('../flags-icon-svg/cn.svg') no-repeat center/contain;
+}
+
+.flag-co {
+  background: url('../flags-icon-svg/co.svg') no-repeat center/contain;
+}
+
+.flag-cr {
+  background: url('../flags-icon-svg/cr.svg') no-repeat center/contain;
+}
+
+.flag-cu {
+  background: url('../flags-icon-svg/cu.svg') no-repeat center/contain;
+}
+
+.flag-cv {
+  background: url('../flags-icon-svg/cv.svg') no-repeat center/contain;
+}
+
+.flag-cw {
+  background: url('../flags-icon-svg/cw.svg') no-repeat center/contain;
+}
+
+.flag-cx {
+  background: url('../flags-icon-svg/cx.svg') no-repeat center/contain;
+}
+
+.flag-cy {
+  background: url('../flags-icon-svg/cy.svg') no-repeat center/contain;
+}
+
+.flag-cz {
+  background: url('../flags-icon-svg/cz.svg') no-repeat center/contain;
+}
+
+.flag-de {
+  background: url('../flags-icon-svg/de.svg') no-repeat center/contain;
+}
+
+.flag-dj {
+  background: url('../flags-icon-svg/dj.svg') no-repeat center/contain;
+}
+
+.flag-dk {
+  background: url('../flags-icon-svg/dk.svg') no-repeat center/contain;
+}
+
+.flag-dm {
+  background: url('../flags-icon-svg/dm.svg') no-repeat center/contain;
+}
+
+.flag-do {
+  background: url('../flags-icon-svg/do.svg') no-repeat center/contain;
+}
+
+.flag-dz {
+  background: url('../flags-icon-svg/dz.svg') no-repeat center/contain;
+}
+
+.flag-ec {
+  background: url('../flags-icon-svg/ec.svg') no-repeat center/contain;
+}
+
+.flag-ee {
+  background: url('../flags-icon-svg/ee.svg') no-repeat center/contain;
+}
+
+.flag-eg {
+  background: url('../flags-icon-svg/eg.svg') no-repeat center/contain;
+}
+
+.flag-eh {
+  background: url('../flags-icon-svg/eh.svg') no-repeat center/contain;
+}
+
+.flag-er {
+  background: url('../flags-icon-svg/er.svg') no-repeat center/contain;
+}
+
+.flag-es {
+  background: url('../flags-icon-svg/es.svg') no-repeat center/contain;
+}
+
+.flag-es-ct {
+  background: url('../flags-icon-svg/es-ct.svg') no-repeat center/contain;
+}
+
+.flag-et {
+  background: url('../flags-icon-svg/et.svg') no-repeat center/contain;
+}
+
+.flag-eu {
+  background: url('../flags-icon-svg/eu.svg') no-repeat center/contain;
+}
+
+.flag-fi {
+  background: url('../flags-icon-svg/fi.svg') no-repeat center/contain;
+}
+
+.flag-fj {
+  background: url('../flags-icon-svg/fj.svg') no-repeat center/contain;
+}
+
+.flag-fk {
+  background: url('../flags-icon-svg/fk.svg') no-repeat center/contain;
+}
+
+.flag-fm {
+  background: url('../flags-icon-svg/fm.svg') no-repeat center/contain;
+}
+
+.flag-fo {
+  background: url('../flags-icon-svg/fo.svg') no-repeat center/contain;
+}
+
+.flag-fr {
+  background: url('../flags-icon-svg/fr.svg') no-repeat center/contain;
+}
+
+.flag-ga {
+  background: url('../flags-icon-svg/ga.svg') no-repeat center/contain;
+}
+
+.flag-gb {
+  background: url('../flags-icon-svg/gb.svg') no-repeat center/contain;
+}
+
+.flag-gb-eng {
+  background: url('../flags-icon-svg/gb-eng.svg') no-repeat center/contain;
+}
+
+.flag-gb-nir {
+  background: url('../flags-icon-svg/gb-nir.svg') no-repeat center/contain;
+}
+
+.flag-gb-sct {
+  background: url('../flags-icon-svg/gb-sct.svg') no-repeat center/contain;
+}
+
+.flag-gb-wls {
+  background: url('../flags-icon-svg/gb-wls.svg') no-repeat center/contain;
+}
+
+.flag-gd {
+  background: url('../flags-icon-svg/gd.svg') no-repeat center/contain;
+}
+
+.flag-ge {
+  background: url('../flags-icon-svg/ge.svg') no-repeat center/contain;
+}
+
+.flag-gf {
+  background: url('../flags-icon-svg/gf.svg') no-repeat center/contain;
+}
+
+.flag-gg {
+  background: url('../flags-icon-svg/gg.svg') no-repeat center/contain;
+}
+
+.flag-gh {
+  background: url('../flags-icon-svg/gh.svg') no-repeat center/contain;
+}
+
+.flag-gi {
+  background: url('../flags-icon-svg/gi.svg') no-repeat center/contain;
+}
+
+.flag-gl {
+  background: url('../flags-icon-svg/gl.svg') no-repeat center/contain;
+}
+
+.flag-gm {
+  background: url('../flags-icon-svg/gm.svg') no-repeat center/contain;
+}
+
+.flag-gn {
+  background: url('../flags-icon-svg/gn.svg') no-repeat center/contain;
+}
+
+.flag-gp {
+  background: url('../flags-icon-svg/gp.svg') no-repeat center/contain;
+}
+
+.flag-gq {
+  background: url('../flags-icon-svg/gq.svg') no-repeat center/contain;
+}
+
+.flag-gr {
+  background: url('../flags-icon-svg/gr.svg') no-repeat center/contain;
+}
+
+.flag-gs {
+  background: url('../flags-icon-svg/gs.svg') no-repeat center/contain;
+}
+
+.flag-gt {
+  background: url('../flags-icon-svg/gt.svg') no-repeat center/contain;
+}
+
+.flag-gu {
+  background: url('../flags-icon-svg/gu.svg') no-repeat center/contain;
+}
+
+.flag-gw {
+  background: url('../flags-icon-svg/gw.svg') no-repeat center/contain;
+}
+
+.flag-gy {
+  background: url('../flags-icon-svg/gy.svg') no-repeat center/contain;
+}
+
+.flag-hk {
+  background: url('../flags-icon-svg/hk.svg') no-repeat center/contain;
+}
+
+.flag-hm {
+  background: url('../flags-icon-svg/hm.svg') no-repeat center/contain;
+}
+
+.flag-hn {
+  background: url('../flags-icon-svg/hn.svg') no-repeat center/contain;
+}
+
+.flag-hr {
+  background: url('../flags-icon-svg/hr.svg') no-repeat center/contain;
+}
+
+.flag-ht {
+  background: url('../flags-icon-svg/ht.svg') no-repeat center/contain;
+}
+
+.flag-hu {
+  background: url('../flags-icon-svg/hu.svg') no-repeat center/contain;
+}
+
+.flag-id {
+  background: url('../flags-icon-svg/id.svg') no-repeat center/contain;
+}
+
+.flag-ie {
+  background: url('../flags-icon-svg/ie.svg') no-repeat center/contain;
+}
+
+.flag-il {
+  background: url('../flags-icon-svg/il.svg') no-repeat center/contain;
+}
+
+.flag-im {
+  background: url('../flags-icon-svg/im.svg') no-repeat center/contain;
+}
+
+.flag-in {
+  background: url('../flags-icon-svg/in.svg') no-repeat center/contain;
+}
+
+.flag-io {
+  background: url('../flags-icon-svg/io.svg') no-repeat center/contain;
+}
+
+.flag-iq {
+  background: url('../flags-icon-svg/iq.svg') no-repeat center/contain;
+}
+
+.flag-ir {
+  background: url('../flags-icon-svg/ir.svg') no-repeat center/contain;
+}
+
+.flag-is {
+  background: url('../flags-icon-svg/is.svg') no-repeat center/contain;
+}
+
+.flag-it {
+  background: url('../flags-icon-svg/it.svg') no-repeat center/contain;
+}
+
+.flag-je {
+  background: url('../flags-icon-svg/je.svg') no-repeat center/contain;
+}
+
+.flag-jm {
+  background: url('../flags-icon-svg/jm.svg') no-repeat center/contain;
+}
+
+.flag-jo {
+  background: url('../flags-icon-svg/jo.svg') no-repeat center/contain;
+}
+
+.flag-jp {
+  background: url('../flags-icon-svg/jp.svg') no-repeat center/contain;
+}
+
+.flag-ke {
+  background: url('../flags-icon-svg/ke.svg') no-repeat center/contain;
+}
+
+.flag-kg {
+  background: url('../flags-icon-svg/kg.svg') no-repeat center/contain;
+}
+
+.flag-kh {
+  background: url('../flags-icon-svg/kh.svg') no-repeat center/contain;
+}
+
+.flag-ki {
+  background: url('../flags-icon-svg/ki.svg') no-repeat center/contain;
+}
+
+.flag-km {
+  background: url('../flags-icon-svg/km.svg') no-repeat center/contain;
+}
+
+.flag-kn {
+  background: url('../flags-icon-svg/kn.svg') no-repeat center/contain;
+}
+
+.flag-kp {
+  background: url('../flags-icon-svg/kp.svg') no-repeat center/contain;
+}
+
+.flag-kr {
+  background: url('../flags-icon-svg/kr.svg') no-repeat center/contain;
+}
+
+.flag-kw {
+  background: url('../flags-icon-svg/kw.svg') no-repeat center/contain;
+}
+
+.flag-ky {
+  background: url('../flags-icon-svg/ky.svg') no-repeat center/contain;
+}
+
+.flag-kz {
+  background: url('../flags-icon-svg/kz.svg') no-repeat center/contain;
+}
+
+.flag-la {
+  background: url('../flags-icon-svg/la.svg') no-repeat center/contain;
+}
+
+.flag-lb {
+  background: url('../flags-icon-svg/lb.svg') no-repeat center/contain;
+}
+
+.flag-lc {
+  background: url('../flags-icon-svg/lc.svg') no-repeat center/contain;
+}
+
+.flag-li {
+  background: url('../flags-icon-svg/li.svg') no-repeat center/contain;
+}
+
+.flag-lk {
+  background: url('../flags-icon-svg/lk.svg') no-repeat center/contain;
+}
+
+.flag-lr {
+  background: url('../flags-icon-svg/lr.svg') no-repeat center/contain;
+}
+
+.flag-ls {
+  background: url('../flags-icon-svg/ls.svg') no-repeat center/contain;
+}
+
+.flag-lt {
+  background: url('../flags-icon-svg/lt.svg') no-repeat center/contain;
+}
+
+.flag-lu {
+  background: url('../flags-icon-svg/lu.svg') no-repeat center/contain;
+}
+
+.flag-lv {
+  background: url('../flags-icon-svg/lv.svg') no-repeat center/contain;
+}
+
+.flag-ly {
+  background: url('../flags-icon-svg/ly.svg') no-repeat center/contain;
+}
+
+.flag-ma {
+  background: url('../flags-icon-svg/ma.svg') no-repeat center/contain;
+}
+
+.flag-mc {
+  background: url('../flags-icon-svg/mc.svg') no-repeat center/contain;
+}
+
+.flag-md {
+  background: url('../flags-icon-svg/md.svg') no-repeat center/contain;
+}
+
+.flag-me {
+  background: url('../flags-icon-svg/me.svg') no-repeat center/contain;
+}
+
+.flag-mf {
+  background: url('../flags-icon-svg/mf.svg') no-repeat center/contain;
+}
+
+.flag-mg {
+  background: url('../flags-icon-svg/mg.svg') no-repeat center/contain;
+}
+
+.flag-mh {
+  background: url('../flags-icon-svg/mh.svg') no-repeat center/contain;
+}
+
+.flag-mk {
+  background: url('../flags-icon-svg/mk.svg') no-repeat center/contain;
+}
+
+.flag-ml {
+  background: url('../flags-icon-svg/ml.svg') no-repeat center/contain;
+}
+
+.flag-mm {
+  background: url('../flags-icon-svg/mm.svg') no-repeat center/contain;
+}
+
+.flag-mn {
+  background: url('../flags-icon-svg/mn.svg') no-repeat center/contain;
+}
+
+.flag-mo {
+  background: url('../flags-icon-svg/mo.svg') no-repeat center/contain;
+}
+
+.flag-mp {
+  background: url('../flags-icon-svg/mp.svg') no-repeat center/contain;
+}
+
+.flag-mq {
+  background: url('../flags-icon-svg/mq.svg') no-repeat center/contain;
+}
+
+.flag-mr {
+  background: url('../flags-icon-svg/mr.svg') no-repeat center/contain;
+}
+
+.flag-ms {
+  background: url('../flags-icon-svg/ms.svg') no-repeat center/contain;
+}
+
+.flag-mt {
+  background: url('../flags-icon-svg/mt.svg') no-repeat center/contain;
+}
+
+.flag-mu {
+  background: url('../flags-icon-svg/mu.svg') no-repeat center/contain;
+}
+
+.flag-mv {
+  background: url('../flags-icon-svg/mv.svg') no-repeat center/contain;
+}
+
+.flag-mw {
+  background: url('../flags-icon-svg/mw.svg') no-repeat center/contain;
+}
+
+.flag-mx {
+  background: url('../flags-icon-svg/mx.svg') no-repeat center/contain;
+}
+
+.flag-my {
+  background: url('../flags-icon-svg/my.svg') no-repeat center/contain;
+}
+
+.flag-mz {
+  background: url('../flags-icon-svg/mz.svg') no-repeat center/contain;
+}
+
+.flag-na {
+  background: url('../flags-icon-svg/na.svg') no-repeat center/contain;
+}
+
+.flag-nc {
+  background: url('../flags-icon-svg/nc.svg') no-repeat center/contain;
+}
+
+.flag-ne {
+  background: url('../flags-icon-svg/ne.svg') no-repeat center/contain;
+}
+
+.flag-nf {
+  background: url('../flags-icon-svg/nf.svg') no-repeat center/contain;
+}
+
+.flag-ng {
+  background: url('../flags-icon-svg/ng.svg') no-repeat center/contain;
+}
+
+.flag-ni {
+  background: url('../flags-icon-svg/ni.svg') no-repeat center/contain;
+}
+
+.flag-nl {
+  background: url('../flags-icon-svg/nl.svg') no-repeat center/contain;
+}
+
+.flag-no {
+  background: url('../flags-icon-svg/no.svg') no-repeat center/contain;
+}
+
+.flag-np {
+  background: url('../flags-icon-svg/np.svg') no-repeat center/contain;
+}
+
+.flag-nr {
+  background: url('../flags-icon-svg/nr.svg') no-repeat center/contain;
+}
+
+.flag-nu {
+  background: url('../flags-icon-svg/nu.svg') no-repeat center/contain;
+}
+
+.flag-nz {
+  background: url('../flags-icon-svg/nz.svg') no-repeat center/contain;
+}
+
+.flag-om {
+  background: url('../flags-icon-svg/om.svg') no-repeat center/contain;
+}
+
+.flag-pa {
+  background: url('../flags-icon-svg/pa.svg') no-repeat center/contain;
+}
+
+.flag-pe {
+  background: url('../flags-icon-svg/pe.svg') no-repeat center/contain;
+}
+
+.flag-pf {
+  background: url('../flags-icon-svg/pf.svg') no-repeat center/contain;
+}
+
+.flag-pg {
+  background: url('../flags-icon-svg/pg.svg') no-repeat center/contain;
+}
+
+.flag-ph {
+  background: url('../flags-icon-svg/ph.svg') no-repeat center/contain;
+}
+
+.flag-pk {
+  background: url('../flags-icon-svg/pk.svg') no-repeat center/contain;
+}
+
+.flag-pl {
+  background: url('../flags-icon-svg/pl.svg') no-repeat center/contain;
+}
+
+.flag-pm {
+  background: url('../flags-icon-svg/pm.svg') no-repeat center/contain;
+}
+
+.flag-pn {
+  background: url('../flags-icon-svg/pn.svg') no-repeat center/contain;
+}
+
+.flag-pr {
+  background: url('../flags-icon-svg/pr.svg') no-repeat center/contain;
+}
+
+.flag-ps {
+  background: url('../flags-icon-svg/ps.svg') no-repeat center/contain;
+}
+
+.flag-pt {
+  background: url('../flags-icon-svg/pt.svg') no-repeat center/contain;
+}
+
+.flag-pw {
+  background: url('../flags-icon-svg/pw.svg') no-repeat center/contain;
+}
+
+.flag-py {
+  background: url('../flags-icon-svg/py.svg') no-repeat center/contain;
+}
+
+.flag-qa {
+  background: url('../flags-icon-svg/qa.svg') no-repeat center/contain;
+}
+
+.flag-re {
+  background: url('../flags-icon-svg/re.svg') no-repeat center/contain;
+}
+
+.flag-ro {
+  background: url('../flags-icon-svg/ro.svg') no-repeat center/contain;
+}
+
+.flag-rs {
+  background: url('../flags-icon-svg/rs.svg') no-repeat center/contain;
+}
+
+.flag-ru {
+  background: url('../flags-icon-svg/ru.svg') no-repeat center/contain;
+}
+
+.flag-rw {
+  background: url('../flags-icon-svg/rw.svg') no-repeat center/contain;
+}
+
+.flag-sa {
+  background: url('../flags-icon-svg/sa.svg') no-repeat center/contain;
+}
+
+.flag-sb {
+  background: url('../flags-icon-svg/sb.svg') no-repeat center/contain;
+}
+
+.flag-sc {
+  background: url('../flags-icon-svg/sc.svg') no-repeat center/contain;
+}
+
+.flag-sd {
+  background: url('../flags-icon-svg/sd.svg') no-repeat center/contain;
+}
+
+.flag-se {
+  background: url('../flags-icon-svg/se.svg') no-repeat center/contain;
+}
+
+.flag-sg {
+  background: url('../flags-icon-svg/sg.svg') no-repeat center/contain;
+}
+
+.flag-sh {
+  background: url('../flags-icon-svg/sh.svg') no-repeat center/contain;
+}
+
+.flag-si {
+  background: url('../flags-icon-svg/si.svg') no-repeat center/contain;
+}
+
+.flag-sj {
+  background: url('../flags-icon-svg/sj.svg') no-repeat center/contain;
+}
+
+.flag-sk {
+  background: url('../flags-icon-svg/sk.svg') no-repeat center/contain;
+}
+
+.flag-sl {
+  background: url('../flags-icon-svg/sl.svg') no-repeat center/contain;
+}
+
+.flag-sm {
+  background: url('../flags-icon-svg/sm.svg') no-repeat center/contain;
+}
+
+.flag-sn {
+  background: url('../flags-icon-svg/sn.svg') no-repeat center/contain;
+}
+
+.flag-so {
+  background: url('../flags-icon-svg/so.svg') no-repeat center/contain;
+}
+
+.flag-sr {
+  background: url('../flags-icon-svg/sr.svg') no-repeat center/contain;
+}
+
+.flag-ss {
+  background: url('../flags-icon-svg/ss.svg') no-repeat center/contain;
+}
+
+.flag-st {
+  background: url('../flags-icon-svg/st.svg') no-repeat center/contain;
+}
+
+.flag-sv {
+  background: url('../flags-icon-svg/sv.svg') no-repeat center/contain;
+}
+
+.flag-sx {
+  background: url('../flags-icon-svg/sx.svg') no-repeat center/contain;
+}
+
+.flag-sy {
+  background: url('../flags-icon-svg/sy.svg') no-repeat center/contain;
+}
+
+.flag-sz {
+  background: url('../flags-icon-svg/sz.svg') no-repeat center/contain;
+}
+
+.flag-tc {
+  background: url('../flags-icon-svg/tc.svg') no-repeat center/contain;
+}
+
+.flag-td {
+  background: url('../flags-icon-svg/td.svg') no-repeat center/contain;
+}
+
+.flag-tf {
+  background: url('../flags-icon-svg/tf.svg') no-repeat center/contain;
+}
+
+.flag-tg {
+  background: url('../flags-icon-svg/tg.svg') no-repeat center/contain;
+}
+
+.flag-th {
+  background: url('../flags-icon-svg/th.svg') no-repeat center/contain;
+}
+
+.flag-tj {
+  background: url('../flags-icon-svg/tj.svg') no-repeat center/contain;
+}
+
+.flag-tk {
+  background: url('../flags-icon-svg/tk.svg') no-repeat center/contain;
+}
+
+.flag-tl {
+  background: url('../flags-icon-svg/tl.svg') no-repeat center/contain;
+}
+
+.flag-tm {
+  background: url('../flags-icon-svg/tm.svg') no-repeat center/contain;
+}
+
+.flag-tn {
+  background: url('../flags-icon-svg/tn.svg') no-repeat center/contain;
+}
+
+.flag-to {
+  background: url('../flags-icon-svg/to.svg') no-repeat center/contain;
+}
+
+.flag-tr {
+  background: url('../flags-icon-svg/tr.svg') no-repeat center/contain;
+}
+
+.flag-tt {
+  background: url('../flags-icon-svg/tt.svg') no-repeat center/contain;
+}
+
+.flag-tv {
+  background: url('../flags-icon-svg/tv.svg') no-repeat center/contain;
+}
+
+.flag-tw {
+  background: url('../flags-icon-svg/tw.svg') no-repeat center/contain;
+}
+
+.flag-tz {
+  background: url('../flags-icon-svg/tz.svg') no-repeat center/contain;
+}
+
+.flag-ua {
+  background: url('../flags-icon-svg/ua.svg') no-repeat center/contain;
+}
+
+.flag-ug {
+  background: url('../flags-icon-svg/ug.svg') no-repeat center/contain;
+}
+
+.flag-um {
+  background: url('../flags-icon-svg/um.svg') no-repeat center/contain;
+}
+
+.flag-un {
+  background: url('../flags-icon-svg/un.svg') no-repeat center/contain;
+}
+
+.flag-us {
+  background: url('../flags-icon-svg/us.svg') no-repeat center/contain;
+}
+
+.flag-uy {
+  background: url('../flags-icon-svg/uy.svg') no-repeat center/contain;
+}
+
+.flag-uz {
+  background: url('../flags-icon-svg/uz.svg') no-repeat center/contain;
+}
+
+.flag-va {
+  background: url('../flags-icon-svg/va.svg') no-repeat center/contain;
+}
+
+.flag-vc {
+  background: url('../flags-icon-svg/vc.svg') no-repeat center/contain;
+}
+
+.flag-ve {
+  background: url('../flags-icon-svg/ve.svg') no-repeat center/contain;
+}
+
+.flag-vg {
+  background: url('../flags-icon-svg/vg.svg') no-repeat center/contain;
+}
+
+.flag-vi {
+  background: url('../flags-icon-svg/vi.svg') no-repeat center/contain;
+}
+
+.flag-vn {
+  background: url('../flags-icon-svg/vn.svg') no-repeat center/contain;
+}
+
+.flag-vu {
+  background: url('../flags-icon-svg/vu.svg') no-repeat center/contain;
+}
+
+.flag-wf {
+  background: url('../flags-icon-svg/wf.svg') no-repeat center/contain;
+}
+
+.flag-ws {
+  background: url('../flags-icon-svg/ws.svg') no-repeat center/contain;
+}
+
+.flag-xk {
+  background: url('../flags-icon-svg/xk.svg') no-repeat center/contain;
+}
+
+.flag-ye {
+  background: url('../flags-icon-svg/ye.svg') no-repeat center/contain;
+}
+
+.flag-yt {
+  background: url('../flags-icon-svg/yt.svg') no-repeat center/contain;
+}
+
+.flag-za {
+  background: url('../flags-icon-svg/za.svg') no-repeat center/contain;
+}
+
+.flag-zm {
+  background: url('../flags-icon-svg/zm.svg') no-repeat center/contain;
+}
+
+.flag-zw {
+  background: url('../flags-icon-svg/zw.svg') no-repeat center/contain;
+}
+
+/******************CSS For Flags End*************************/
