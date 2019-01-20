@@ -1,6 +1,6 @@
 {
   "name": "intl-input-phone",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Angular library to provide the international phone number feature by country dropdown and input fields with lots of customization and features like input masking, change the country, require valiation and many more.",
   "author": {
     "name": "Suraj Mathe",
@@ -12,7 +12,7 @@
   },
   "bugs": {
     "url": "https://github.com/surajmathe/intl-input-phone/issues"
-  },
+  },  
   "homepage": "https://github.com/surajmathe/intl-input-phone",
   "keywords": [
     "angular",
