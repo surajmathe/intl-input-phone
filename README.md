@@ -240,7 +240,7 @@ Enum for specify output type of result. Enum members are -
         }
     ```  
   
-  # Contribute -
+# Contribute -
   Thanks for using the plugin!! Feel free to report any issue or change request required.
   
   Your appreciation would really appreciate me for further contributing in this plugin.  
