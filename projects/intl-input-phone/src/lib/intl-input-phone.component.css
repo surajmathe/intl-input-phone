@@ -692,6 +692,9 @@ min-width: 250px;
 .select2-dropdown.select2-dropdown--below{
   width: max-content!important;
 }
+.select2-dropdown.select2-dropdown--above{
+  width: max-content!important;
+}
 /******************** CSS Used in plugin end*********************/
 
 /******************CSS For Flags Start*************************/

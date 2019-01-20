@@ -22,6 +22,9 @@ export class CustomCountryModel{
     }
 }
 
+/**
+ * Class for return the final result when input is filled correctly.
+ */
 export class NumberResult{
     Number : string;
     CountryModel : CountryModel;
