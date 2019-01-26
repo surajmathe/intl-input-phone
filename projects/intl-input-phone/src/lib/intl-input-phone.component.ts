@@ -326,7 +326,7 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
       $("." + this.ConfigurationOption.SelectorClass + " .CountryNumberInput")
       .inputmask(this.selectedCountry.InputMasking,
         {
-          placeholder : this.selectedCountry.InputMasking,
+          placeholder : "_",
           oncomplete : this.maskingOnCompleteEvent,
           onincomplete : this.maskingOnInCompleteEvent,
           oncleared : this.maskingOnClearedEvent
