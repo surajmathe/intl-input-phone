@@ -5,10 +5,15 @@ import {
   ViewEncapsulation,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  SimpleChange
 } from "@angular/core";
 import { IntlInputPhoneService } from "./intl-input-phone.service";
-import { CountryModel, CustomCountryModel, NumberResult } from "./model/CountryModel";
+import {
+  CountryModel,
+  CustomCountryModel,
+  NumberResult
+} from "./model/CountryModel";
 import { ConfigurationOptions } from "./model/Configuration";
 import {
   ContentOptionsEnum,
@@ -38,35 +43,41 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
   /**
    * Input property to set the prefilled number value.
    */
-  @Input() NumberTextValue : string;
+  @Input() NumberTextValue: string;
 
   /**
    * Input property to set the selected country isocode not able to get correctly from number text value.
    */
-  @Input() SelectedCountryISOCode : string;
+  @Input() SelectedCountryISOCode: string;
 
   /**
    * Output event : It is fire when Is Required flag is change.
    */
-  @Output() OnIsRequiredChange :  EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() OnIsRequiredChange: EventEmitter<boolean> = new EventEmitter<
+    boolean
+  >();
 
   /**
    * Output event : It is fire when Number is filled completly according to input masking.
    * return number or number with country code.
    */
-  @Output() OnNumberChange : EventEmitter<NumberResult> = new EventEmitter<NumberResult>();
+  @Output() OnNumberChange: EventEmitter<NumberResult> = new EventEmitter<
+    NumberResult
+  >();
 
   /**
    * Output event : It is fire when Number is filled completly according to input masking.
    * return number or number with country code.
    */
-  @Output() OnCountryDrpdwnChange : EventEmitter<CountryModel> = new EventEmitter<CountryModel>();
+  @Output() OnCountryDrpdwnChange: EventEmitter<
+    CountryModel
+  > = new EventEmitter<CountryModel>();
 
-  IsInputComplete : boolean = false;
+  IsInputComplete: boolean = false;
 
   allCountryList: CountryModel[] = [];
   filteredCountryList: CountryModel[] = [];
-  selectedCountry : CountryModel;
+  selectedCountry: CountryModel;
   constructor(private _service: IntlInputPhoneService) {
     /**
      * Get Country list data.
@@ -87,13 +98,20 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
     this.initializeCountryDrpDwn();
   }
 
+  ngOnChanges(changes: SimpleChange) {
+    if (
+      changes["NumberTextValue"] &&
+      changes["NumberTextValue"].previousValue !=
+        changes["NumberTextValue"].currentValue
+    ) {
+      this.initializeCountryDrpDwn();
+    }
+  }
+
   /**
    * Method to initialize the country Dropdown.
    */
   initializeCountryDrpDwn() {
-    
-
-
     //#region Apply filter based on user given country list
     if (
       this.CountryList != null &&
@@ -172,58 +190,63 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
     }
     //#endregion
 
-
     //#region  set the selected country dropdown and set the input value.
-        if(this.NumberTextValue != null && this.NumberTextValue != undefined && this.NumberTextValue != "")
-        {          
-          //get the country code from number and set the selected country.
-          let countryCode = this.NumberTextValue.split(/ /)[0];          
-          //replace the country code from numbertext.
-          let NumberValue = this.NumberTextValue.replace(countryCode, "");
-          NumberValue = NumberValue.trim();
+    let selectedCountry: any;
+    let NumberValue: any;
+    if (
+      this.NumberTextValue != null &&
+      this.NumberTextValue != undefined &&
+      this.NumberTextValue != ""
+    ) {
+      //get the country code from number and set the selected country.
+      let countryCode = this.NumberTextValue.split(/ /)[0];
+      //replace the country code from numbertext.
+      NumberValue = this.NumberTextValue.replace(countryCode, "");
+      NumberValue = NumberValue.trim();
 
-          if(countryCode.includes("+"))
-          {
-            //check if country contain bracket then get country code till next space.
-            if(NumberValue[0] == "(")
-            {
-              countryCode += " " +  NumberValue.split(/ /)[0];
-              NumberValue = this.NumberTextValue.replace(countryCode, "");
-            }          
-            //add the space in country code and trim the numbervalue.
-            countryCode += " ";
-            NumberValue = NumberValue.trim();
-          }
-          else{
-            NumberValue = countryCode;
-            countryCode = "";
-          }
-          
-          //set the countrycode from 
-          if(this.SelectedCountryISOCode != null && this.SelectedCountryISOCode != undefined && this.SelectedCountryISOCode != "")
-          {
-              //get the selected country dropdown match the inital 3 character with the countrycode from the filteredcountry list.
-              let selectedCountry : any = this.filteredCountryList.find(x=> x.ISOCode == this.SelectedCountryISOCode);
-              if(selectedCountry != null && selectedCountry != undefined)
-              {        
-                selectedCountry.selected = true;            
-              }
-          }
-          else{
-              //get the selected country dropdown match the inital 3 character with the countrycode from the filteredcountry list.
-              let selectedCountry : any = this.filteredCountryList.find(x=> x.CountryPhoneCode == countryCode);
-              if(selectedCountry != null && selectedCountry != undefined)
-              {        
-                selectedCountry.selected = true;            
-              }
-          }
-          
- 
-          $("." + this.ConfigurationOption.SelectorClass + " .CountryNumberInput").val(NumberValue);
-           
+      if (countryCode.includes("+")) {
+        //check if country contain bracket then get country code till next space.
+        if (NumberValue[0] == "(") {
+          countryCode += " " + NumberValue.split(/ /)[0];
+          NumberValue = this.NumberTextValue.replace(countryCode, "");
         }
-            
-        //#endregion
+        //add the space in country code and trim the numbervalue.
+        countryCode += " ";
+        NumberValue = NumberValue.trim();
+      } else {
+        NumberValue = countryCode;
+        countryCode = "";
+      }
+
+      //set the countrycode from
+      this.filteredCountryList = $.map(this.filteredCountryList, objCountry => {
+        objCountry.selected = false;
+        return objCountry;
+      });      
+      if (
+        this.SelectedCountryISOCode != null &&
+        this.SelectedCountryISOCode != undefined &&
+        this.SelectedCountryISOCode != ""
+      ) {
+        //get the selected country dropdown match the inital 3 character with the countrycode from the filteredcountry list.
+        selectedCountry = this.filteredCountryList.find(
+          x => x.ISOCode == this.SelectedCountryISOCode
+        );
+        if (selectedCountry != null && selectedCountry != undefined) {
+          selectedCountry.selected = true;
+        }
+      } else {
+        //get the selected country dropdown match the inital 3 character with the countrycode from the filteredcountry list.
+        selectedCountry = this.filteredCountryList.find(
+          x => x.CountryPhoneCode == countryCode
+        );
+        if (selectedCountry != null && selectedCountry != undefined) {
+          selectedCountry.selected = true;
+        }
+      }
+    }
+
+    //#endregion
 
     //#region set the id and title for the country dropdown.
     var selectedDrpDwnData = $.map(this.filteredCountryList, obj => {
@@ -262,8 +285,17 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
         templateSelection: this.prepareHtmlOptionSelected
       }
     );
+    if (selectedCountry && selectedCountry.selected) {
+      $("." + this.ConfigurationOption.SelectorClass + " .CountryDrpDwn")
+        .val(selectedCountry.id)
+        .trigger("change");
+    }
 
-
+    if (NumberValue != null && NumberValue != undefined && NumberValue != "") {
+      $(
+        "." + this.ConfigurationOption.SelectorClass + " .CountryNumberInput"
+      ).val(NumberValue);
+    }
   }
 
   /**
@@ -273,27 +305,37 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
   prepareHtmlOptionToRender = (country: CountryModel) => {
     let optionHtml = "";
     optionHtml += `<div class="CountryOptionItem">`;
-    if (this.ConfigurationOption.OptionTextTypes.includes(ContentOptionsEnum.Flag))
-    {
-      //check if customflag url is set then show the for that url 
-      if(country.IsShowCustomFlag != null && country.IsShowCustomFlag != undefined && country.IsShowCustomFlag)
-      {
-        optionHtml+= `<div class="flags" style="background:url(`+
-        country.CustomFlagUrl
-        +`) no-repeat center/contain;"></div>`;
-      }
-      else{
+    if (
+      this.ConfigurationOption.OptionTextTypes.includes(ContentOptionsEnum.Flag)
+    ) {
+      //check if customflag url is set then show the for that url
+      if (
+        country.IsShowCustomFlag != null &&
+        country.IsShowCustomFlag != undefined &&
+        country.IsShowCustomFlag
+      ) {
+        optionHtml +=
+          `<div class="flags" style="background:url(` +
+          country.CustomFlagUrl +
+          `) no-repeat center/contain;"></div>`;
+      } else {
         optionHtml += `<div class="flags ` + country.FlagCssClass + `"></div>`;
-      }     
-
+      }
     }
-    if (this.ConfigurationOption.OptionTextTypes.includes(ContentOptionsEnum.CountryName))
-    { 
+    if (
+      this.ConfigurationOption.OptionTextTypes.includes(
+        ContentOptionsEnum.CountryName
+      )
+    ) {
       optionHtml += `<div class="CountryText">` + country.Name + `</div>`;
     }
-    if(this.ConfigurationOption.OptionTextTypes.includes(ContentOptionsEnum.CountryPhoneCode))
-    {
-      optionHtml += `<div class="CountryCode"> ` + country.CountryPhoneCode + `</div>`;
+    if (
+      this.ConfigurationOption.OptionTextTypes.includes(
+        ContentOptionsEnum.CountryPhoneCode
+      )
+    ) {
+      optionHtml +=
+        `<div class="CountryCode"> ` + country.CountryPhoneCode + `</div>`;
     }
     optionHtml += `</div>`;
     return $(optionHtml);
@@ -303,34 +345,42 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
    * Return the Country falg and country code.
    * Change the input masking for the input.
    */
-  prepareHtmlOptionSelected = (selectedItem : any) => {
-    this.selectedCountry  = selectedItem;
+  prepareHtmlOptionSelected = (selectedItem: any) => {
+    this.selectedCountry = selectedItem;
     let selectedHtml = "";
     selectedHtml += `<div class="CountryOptionItem CountryOptionSelected">`;
-    //check if customflag url is set then show the for that url 
-    if(selectedItem.IsShowCustomFlag != null && selectedItem.IsShowCustomFlag != undefined && selectedItem.IsShowCustomFlag)
-    {
-      selectedHtml +=  `<div class="flags" style="background:url(`+
-      selectedItem.CustomFlagUrl
-      +`) no-repeat center/contain;"></div>`;
-    }
-    else{
-      selectedHtml += `<div class="flags ` + selectedItem.FlagCssClass + `"></div>`;
+    //check if customflag url is set then show the for that url
+    if (
+      selectedItem.IsShowCustomFlag != null &&
+      selectedItem.IsShowCustomFlag != undefined &&
+      selectedItem.IsShowCustomFlag
+    ) {
+      selectedHtml +=
+        `<div class="flags" style="background:url(` +
+        selectedItem.CustomFlagUrl +
+        `) no-repeat center/contain;"></div>`;
+    } else {
+      selectedHtml +=
+        `<div class="flags ` + selectedItem.FlagCssClass + `"></div>`;
     }
 
-    selectedHtml += `<div class="CountryCode"> ` + selectedItem.CountryPhoneCode + `</div>`;
+    selectedHtml +=
+      `<div class="CountryCode"> ` + selectedItem.CountryPhoneCode + `</div>`;
     selectedHtml += `</div>`;
-    
-    if(this.selectedCountry != null && this.selectedCountry.InputMasking != null && this.selectedCountry.InputMasking != "")
-    {
-      $("." + this.ConfigurationOption.SelectorClass + " .CountryNumberInput")
-      .inputmask(this.selectedCountry.InputMasking,
-        {
-          placeholder : "_",
-          oncomplete : this.maskingOnCompleteEvent,
-          onincomplete : this.maskingOnInCompleteEvent,
-          oncleared : this.maskingOnClearedEvent
-        });
+
+    if (
+      this.selectedCountry != null &&
+      this.selectedCountry.InputMasking != null &&
+      this.selectedCountry.InputMasking != ""
+    ) {
+      $(
+        "." + this.ConfigurationOption.SelectorClass + " .CountryNumberInput"
+      ).inputmask(this.selectedCountry.InputMasking, {
+        placeholder: "_",
+        oncomplete: this.maskingOnCompleteEvent,
+        onincomplete: this.maskingOnInCompleteEvent,
+        oncleared: this.maskingOnClearedEvent
+      });
       //emit the output event.
       this.OnCountryDrpdwnChange.emit(this.selectedCountry);
     }
@@ -375,7 +425,9 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
    * Check if user given country is not available our list then add in the country.
    * Check if user given country is available in our list then replace those value which is not given by user.
    */
-  getCountryOptionFromCustomCountry = ( customCountry: CustomCountryModel): CountryModel => {
+  getCountryOptionFromCustomCountry = (
+    customCountry: CustomCountryModel
+  ): CountryModel => {
     let existingCountry = this.allCountryList.find(
       x => x.ISOCode == customCountry.ISOCode
     );
@@ -430,19 +482,18 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
     }
   };
 
-
   /**
    * Event to handle the completed event for input masking.
    */
-  maskingOnCompleteEvent = (e : any) : void =>{
-    this.IsInputComplete = true;    
+  maskingOnCompleteEvent = (e: any): void => {
+    this.IsInputComplete = true;
     this.emitIsRequiredEvent();
   };
 
   /**
    * Event to handle incomplete event for input masking.
    */
-  maskingOnInCompleteEvent = (e : any) : void =>{
+  maskingOnInCompleteEvent = (e: any): void => {
     this.IsInputComplete = false;
     this.emitIsRequiredEvent();
   };
@@ -450,7 +501,7 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
   /**
    * Event to handle cleared event for input masking.
    */
-  maskingOnClearedEvent = (e : any) : void =>{
+  maskingOnClearedEvent = (e: any): void => {
     this.IsInputComplete = false;
     this.emitIsRequiredEvent();
   };
@@ -458,10 +509,9 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
   /**
    * Emit is Input completed event to outer component.
    */
-  emitIsRequiredEvent(){
+  emitIsRequiredEvent() {
     this.OnIsRequiredChange.emit(this.IsInputComplete);
-    if(this.IsInputComplete)
-    {
+    if (this.IsInputComplete) {
       this.emitOnNumberChange();
     }
   }
@@ -470,22 +520,24 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
    * Emit when input is change and completed the masking.
    * Return the output value based on configuration that whether we need to return number only or number with country code.
    */
-  emitOnNumberChange(){    
-    let inputValue : string = $("." + this.ConfigurationOption.SelectorClass + " .CountryNumberInput").val();
-    
-    let outputResult : NumberResult = {
-      CountryModel : this.selectedCountry,
-      Number : ""
+  emitOnNumberChange() {
+    let inputValue: string = $(
+      "." + this.ConfigurationOption.SelectorClass + " .CountryNumberInput"
+    ).val();
+
+    let outputResult: NumberResult = {
+      CountryModel: this.selectedCountry,
+      Number: ""
     };
-    if(this.ConfigurationOption.OutputFormat == OutputOptionsEnum.NumberWithCountryCode)
-    {
-      let selectedCountryCode : string = this.selectedCountry.CountryPhoneCode;      
-      outputResult.Number = selectedCountryCode + inputValue;      
+    if (
+      this.ConfigurationOption.OutputFormat ==
+      OutputOptionsEnum.NumberWithCountryCode
+    ) {
+      let selectedCountryCode: string = this.selectedCountry.CountryPhoneCode;
+      outputResult.Number = selectedCountryCode + inputValue;
+    } else {
+      outputResult.Number = inputValue;
     }
-    else{
-      outputResult.Number =  inputValue;      
-    } 
-    this.OnNumberChange.emit(outputResult);   
+    this.OnNumberChange.emit(outputResult);
   }
-  
 }
