@@ -6,6 +6,8 @@ Open Source Angular plugin for entering and validating international mobile numb
 
 You can see [Demo Here.](https://intl-input-phone-demo.stackblitz.io/)
 
+[Demo Link 2](https://stackblitz.com/edit/intl-input-phone-demo)
+
 # How to use -
 
 - Step 1 - Add dependancy in to your project
