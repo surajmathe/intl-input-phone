@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {IntlInputPhoneModule } from 'intl-input-phone';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {IntlInputPhoneModule } from 'intl-input-phone';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    IntlInputPhoneModule
+    IntlInputPhoneModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
