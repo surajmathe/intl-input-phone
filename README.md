@@ -86,6 +86,11 @@ For more detail please check the [Stackblitz Example](https://stackblitz.com/edi
   - You can customize the country input masking.
   - You can specify only few country listing in dropdown instead of all country list.
   - You can add new country if not avaliable in my country.
+  
+- Provide the Reactive form support. [See Demo Here](https://intl-input-phone-demo.stackblitz.io/#CustomizationReactiveForm)-
+  - You can enable/disable control using reactive form.
+  - You can set/get value using reactive form.
+  - Note - When use control with reactive form, you should set control OutputFormat as OutputOptionsEnum.Number.
 
 # Documentation -
 
@@ -272,6 +277,41 @@ Enum for specify output type of result. Enum members are -
           this.OutputValue = outputResult;
           console.log("Output result is", this.OutputValue);
         }
+
+       ....
+       ....
+    }
+  ```
+- **Integrate the with reactive form.**
+
+  In component html file.
+
+  ```HTML
+    <form [formGroup]="sampleForm">
+     <intl-input-phone [ConfigurationOption]="configOption1" formControlName="sampleReactiveControl" ></intl-input-phone>
+    </form>
+  ```
+
+  In component typescript file.
+
+  ```typescript
+    ...
+    ...
+    export class ReactiveFormSampleComponent implements OnInit {
+      configOption1: ConfigurationOptions;
+      sampleForm : FormGroup
+      constructor( private formBuilder : FormBuilder) {
+      this.sampleForm = this.formBuilder.group({
+      "sampleReactiveControl" : new FormControl()
+      });
+      this.configOption1 = new ConfigurationOptions();
+      //If you are use control using reactive form then you should use use this output form only.
+      this.configOption1.OutputFormat = OutputOptionsEnum.Number;
+          ...
+          ...
+       }
+       ...
+        
 
        ....
        ....
@@ -529,6 +569,3 @@ Below are the list of country data used in this library. Which is appear in the 
 
 Thanks for using the plugin!! Feel free to report any issue or change request required.
 
-Your appreciation would really appreciate me for further contributing in this plugin.
-
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ENNZSJNZKDEQ2)
