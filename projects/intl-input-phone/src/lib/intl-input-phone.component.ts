@@ -6,8 +6,10 @@ import {
   Input,
   Output,
   EventEmitter,
-  SimpleChange
+  SimpleChange,
+  forwardRef
 } from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { IntlInputPhoneService } from "./intl-input-phone.service";
 import {
   CountryModel,
@@ -27,9 +29,17 @@ declare var $: any;
   selector: "intl-input-phone",
   templateUrl: "./intl-input-phone.component.html",
   styleUrls: ["./intl-input-phone.component.css"],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => IntlInputPhoneComponent),
+      multi: true
+    }
+  ]
 })
-export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
+export class IntlInputPhoneComponent
+  implements OnInit, AfterViewInit, ControlValueAccessor {
   /**
    * Input property to set the Custom Country List.
    */
@@ -53,31 +63,88 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
   /**
    * Output event : It is fire when Is Required flag is change.
    */
-  @Output() OnIsRequiredChange: EventEmitter<boolean> = new EventEmitter<
-    boolean
-  >();
+  @Output() OnIsRequiredChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   /**
    * Output event : It is fire when Number is filled completly according to input masking.
    * return number or number with country code.
    */
-  @Output() OnNumberChange: EventEmitter<NumberResult> = new EventEmitter<
-    NumberResult
-  >();
+  @Output() OnNumberChange: EventEmitter<NumberResult> = new EventEmitter<NumberResult>();
 
   /**
    * Output event : It is fire when Number is filled completly according to input masking.
    * return number or number with country code.
    */
-  @Output() OnCountryDrpdwnChange: EventEmitter<
-    CountryModel
-  > = new EventEmitter<CountryModel>();
+  @Output() OnCountryDrpdwnChange: EventEmitter<CountryModel> = new EventEmitter<CountryModel>();
+  onChange: any = () => {};
+  onTouched: any = () => {};
 
+  /**
+   *
+   * @param obj In this InputCountryModel : In "Number" we expect mobile number without country code and "ISOCode" we expect ISO code
+   * for setting the country flag.
+   */
+  writeValue(obj: NumberResult): void {
+    if(obj && obj.CountryModel.ISOCode)
+    {
+      let selectedCountry = this.filteredCountryList.find(
+        x => x.ISOCode == obj.CountryModel.ISOCode
+      );
+      if (selectedCountry && selectedCountry.ISOCode) {
+        $("." + this.ConfigurationOption.SelectorClass + " .CountryDrpDwn")
+          .val(selectedCountry.ISOCode)
+          .trigger("change");
+          $("." + this.ConfigurationOption.SelectorClass + " .CountryNumberInput").val(obj.Number);
+      }
+    }
+  }
+  
+  /**
+   * Register On Change Event
+   */
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+  /**
+   * Register on touched events.
+   */
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  get value(){
+    return this.outputResult;
+  }
+
+  set value(obj : NumberResult)
+  {
+    this.writeValue(obj);
+  }
+  /**
+   * Method to set the enable/disable state of the control using reactive form.
+   */
+  setDisabledState?(isDisabled: boolean): void {
+    if ($("." + this.ConfigurationOption.SelectorClass + " .CountryDrpDwn")) {
+      $("." + this.ConfigurationOption.SelectorClass + " .CountryDrpDwn").prop(
+        "disabled",
+        isDisabled
+      );
+      
+    }
+    if ($("." + this.ConfigurationOption.SelectorClass + " .CountryNumberInput")) {
+      $("." + this.ConfigurationOption.SelectorClass + " .CountryNumberInput").prop(
+        "disabled",
+        isDisabled
+      );
+      
+    }
+  }
   IsInputComplete: boolean = false;
 
   allCountryList: CountryModel[] = [];
   filteredCountryList: CountryModel[] = [];
   selectedCountry: CountryModel;
+  outputResult: NumberResult;
   constructor(private _service: IntlInputPhoneService) {
     /**
      * Get Country list data.
@@ -222,7 +289,7 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
       this.filteredCountryList = $.map(this.filteredCountryList, objCountry => {
         objCountry.selected = false;
         return objCountry;
-      });      
+      });
       if (
         this.SelectedCountryISOCode != null &&
         this.SelectedCountryISOCode != undefined &&
@@ -514,8 +581,13 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
     if (this.IsInputComplete) {
       this.emitOnNumberChange();
     }
+    else{
+      this.outputResult = null;
+      //updating null value in the form group.
+      this.onChange(null);
+    }
   }
-
+  
   /**
    * Emit when input is change and completed the masking.
    * Return the output value based on configuration that whether we need to return number only or number with country code.
@@ -525,7 +597,7 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
       "." + this.ConfigurationOption.SelectorClass + " .CountryNumberInput"
     ).val();
 
-    let outputResult: NumberResult = {
+    this.outputResult = {
       CountryModel: this.selectedCountry,
       Number: ""
     };
@@ -534,10 +606,11 @@ export class IntlInputPhoneComponent implements OnInit, AfterViewInit {
       OutputOptionsEnum.NumberWithCountryCode
     ) {
       let selectedCountryCode: string = this.selectedCountry.CountryPhoneCode;
-      outputResult.Number = selectedCountryCode + inputValue;
+      this.outputResult.Number = selectedCountryCode + inputValue;
     } else {
-      outputResult.Number = inputValue;
+      this.outputResult.Number = inputValue;
     }
-    this.OnNumberChange.emit(outputResult);
+    this.OnNumberChange.emit(this.outputResult);
+    this.onChange(this.outputResult);
   }
 }
