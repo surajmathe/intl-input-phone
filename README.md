@@ -282,7 +282,7 @@ Enum for specify output type of result. Enum members are -
        ....
     }
   ```
-- **Integrate the with reactive form.**
+- **Integrate with reactive form.**
 
   In component html file.
 
